@@ -40,14 +40,14 @@ export const CardLayout = ({
     onClick(id);
   };
 
-  const handleOnShowAll = (evt: any) => {
+  const handleOnShowAll = (evt: React.MouseEvent<HTMLElement>) => {
     evt.stopPropagation();
     const totalLen = cameras.length;
     setListLength(totalLen);
     setShowAll(true);
   };
 
-  const handleOnShowLess = (evt: any) => {
+  const handleOnShowLess = (evt: React.MouseEvent<HTMLElement>) => {
     evt.stopPropagation();
     setListLength(3);
     setShowAll(false);
