@@ -26,6 +26,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
               direction="column"
               justifyContent={"center"}
               alignItems={"center"}
+              m={10}
             >
               <CircularProgress color="secondary" />
               <Typography
