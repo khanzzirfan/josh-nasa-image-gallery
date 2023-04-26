@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
-import { CardLayout } from "./CardLayout";
+import { CardLayout } from "./RoverCardLayout";
 
 type IRoversListProps = {
   data: any;
