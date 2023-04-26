@@ -51,7 +51,11 @@ export const RoverDetailsPage = () => {
               </Box>
             </Grid>
             <Grid item xs={12}>
-              <ImageGallery data={data} isLoading={isLoading} />
+              <ImageGallery
+                data={data}
+                isLoading={isLoading}
+                roverId={Number(id)}
+              />
             </Grid>
           </Grid>
         </Paper>

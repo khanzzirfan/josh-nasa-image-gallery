@@ -10,10 +10,11 @@ import Typography from "@mui/material/Typography";
 type IImageGalleryProps = {
   data: any;
   isLoading: boolean;
+  roverId: number;
 };
 
 export const ImageGallery = (props: IImageGalleryProps) => {
-  const { data, isLoading } = props;
+  const { data, isLoading, roverId } = props;
 
   return (
     <ImageList sx={{ height: 550 }} cols={3}>
@@ -47,7 +48,9 @@ export const ImageGallery = (props: IImageGalleryProps) => {
           </ImageListItem>
         ))}
         {!isLoading && isEmpty(data) && (
-          <Typography mx={2}>No photos found.</Typography>
+          <Typography mx={2}>
+            No photos found for a rover id {roverId}.
+          </Typography>
         )}
       </>
     </ImageList>
