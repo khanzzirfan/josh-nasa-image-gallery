@@ -20,7 +20,7 @@ export const RoverDetailsPage = () => {
   const today = format(new Date(), viewFormat);
   const [date, setDate] = React.useState(today);
   const dt = format(parse(date, viewFormat, new Date()), apiDateFormat);
-  const { data } = useGetRoverCuriosity(dt, Number(id));
+  const { isLoading, data } = useGetRoverCuriosity(dt, Number(id));
 
   const handleDateChange = (date: any) => {
     const selectedFormatDate = isValid(new Date(date))
@@ -51,7 +51,7 @@ export const RoverDetailsPage = () => {
               </Box>
             </Grid>
             <Grid item xs={12}>
-              <ImageGallery data={data} />
+              <ImageGallery data={data} isLoading={isLoading} />
             </Grid>
           </Grid>
         </Paper>
