@@ -25,3 +25,5 @@ npm run build
 ## Detail Page Overview
 
 Photos for the detail page are displayed only if the resulting api returns the data for the selected rover id. if there are no photos for a selected id then a placeholder text is displayed.
+Try changing the date or the rover id to see the images. 
+For me only the rover id = 5 is working. 
