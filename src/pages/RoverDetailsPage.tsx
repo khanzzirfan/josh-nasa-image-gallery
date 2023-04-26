@@ -34,31 +34,46 @@ export const RoverDetailsPage = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Container maxWidth="lg">
-        <Paper elevation={1} sx={{ margingTop: "6px" }}>
-          <Grid
-            container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-          >
-            <Grid item xs={12}>
-              <Box display={"inline-flex"} alignItems={"center"}>
-                <Typography mx={2}>Date</Typography>
-                <DatePicker
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  format={viewFormat}
+        <Box
+          sx={{ width: "100%" }}
+          display={"flex"}
+          flex={1}
+          justifyContent={"center"}
+          alignItems={"center"}
+          mt={2}
+        >
+          <Paper elevation={0} sx={{ margingTop: "16px" }}>
+            <Box>
+              <Typography variant="h1" component="h2">
+                Rovers Details
+              </Typography>
+            </Box>
+
+            <Grid
+              container
+              rowSpacing={1}
+              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            >
+              <Grid item xs={12} mt={3}>
+                <Box display={"inline-flex"} alignItems={"center"}>
+                  <Typography mx={2}>Date</Typography>
+                  <DatePicker
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    format={viewFormat}
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={12}>
+                <ImageGallery
+                  data={data}
+                  isLoading={isLoading}
+                  roverId={Number(id)}
                 />
-              </Box>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <ImageGallery
-                data={data}
-                isLoading={isLoading}
-                roverId={Number(id)}
-              />
-            </Grid>
-          </Grid>
-        </Paper>
+          </Paper>
+        </Box>
       </Container>
     </LocalizationProvider>
   );
