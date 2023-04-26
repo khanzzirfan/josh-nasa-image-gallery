@@ -3,7 +3,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import map from "lodash/map";
 import isEmpty from "lodash/isEmpty";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 type IImageGalleryProps = {
   data: any;
