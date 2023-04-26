@@ -5,8 +5,10 @@ import Typography from "@mui/material/Typography";
 import CardHeader from "@mui/material/CardHeader";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
-import { map } from "lodash";
+import { map, take } from "lodash";
 import CardActionArea from "@mui/material/CardActionArea";
+import * as React from "react";
+import Button from "@mui/material/Button";
 
 type ICameraProps = {
   id: string;
@@ -32,9 +34,25 @@ export const CardLayout = ({
   total_photos,
   cameras,
 }: ICardLayout) => {
+  const [showAll, setShowAll] = React.useState(false);
+  const [listlength, setListLength] = React.useState(3);
   const handleOnClick = () => {
     onClick(id);
   };
+
+  const handleOnShowAll = (evt: any) => {
+    evt.stopPropagation();
+    const totalLen = cameras.length;
+    setListLength(totalLen);
+    setShowAll(true);
+  };
+
+  const handleOnShowLess = (evt: any) => {
+    evt.stopPropagation();
+    setListLength(3);
+    setShowAll(false);
+  };
+
   return (
     <Card sx={{ display: "flex", flexDirection: "column" }}>
       <CardActionArea onClick={handleOnClick}>
@@ -71,15 +89,62 @@ export const CardLayout = ({
               <Typography component="div" variant="subtitle1" mr={2}>
                 Cameras
               </Typography>
-              <Box>
-                {map(cameras, (cam) => (
+              <Box
+                display="flex"
+                flexWrap={"wrap"}
+                flexShrink={1}
+                alignItems={"flex-star"}
+                justifyContent={"flex-start"}
+              >
+                {map(take(cameras, listlength), (cam) => (
                   <Chip
+                    key={cam.id}
                     label={cam.name}
                     variant="outlined"
                     size="small"
                     sx={{ mb: 0.3, mr: 0.3 }}
                   />
                 ))}
+                {!showAll && (
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    onClick={handleOnShowAll}
+                    sx={{
+                      width: "69px",
+                      height: "25px",
+                      background: "transparent",
+                      border: "solid white 1px",
+                      borderRadius: 2,
+                      color: "white",
+                      fontSize: "0.625rem",
+                      padding: "2px",
+                      margin: "2px",
+                    }}
+                  >
+                    SHOW MORE
+                  </Button>
+                )}
+                {showAll && (
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    onClick={handleOnShowLess}
+                    sx={{
+                      width: "69px",
+                      height: "25px",
+                      background: "transparent",
+                      border: "solid white 1px",
+                      borderRadius: 2,
+                      color: "white",
+                      fontSize: "0.625rem",
+                      padding: "2px",
+                      margin: "2px",
+                    }}
+                  >
+                    SHOW LESS
+                  </Button>
+                )}
               </Box>
             </Box>
           </CardContent>
